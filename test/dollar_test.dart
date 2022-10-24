@@ -6,13 +6,11 @@ void main() {
     "Dollar",
     () {
       test(
-        "times() should not affect original amount",
+        "times() should do right multiplication",
         () async {
-          final dollar = Dollar(5);
-          Dollar product = dollar.times(2);
-          expect(10, product.amount);
-          product = dollar.times(3);
-          expect(15, product.amount);
+          final five = Dollar(5);
+          expect(Dollar(10).equals(five.times(2)), true);
+          expect(Dollar(15).equals(five.times(3)), true);
         },
       );
 
@@ -21,7 +19,7 @@ void main() {
         () async {
           final dollar = Dollar(5);
           expect(dollar.equals(Dollar(5)), true);
-          expect(dollar.equals(6), false);
+          expect(dollar.equals(Dollar(6)), false);
         },
       );
     },
