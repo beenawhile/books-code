@@ -6,8 +6,10 @@ void main() {
     "Dollar multiplication should return right amount",
     () async {
       final dollar = Dollar(5);
-      dollar.times(2);
-      expect(10, dollar.amount);
+      Dollar product = dollar.times(2);
+      expect(10, product.amount);
+      product = dollar.times(3);
+      expect(15, product.amount);
     },
   );
 }

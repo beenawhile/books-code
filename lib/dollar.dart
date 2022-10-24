@@ -1,13 +1,14 @@
+/// $5 + 10 CHF = $10 if rate is 2:1<br/>
+/// ~$5 * 2 = $10~<br/>
+/// Make "amount" private<br/>
+/// ~Dollar side-effects?~<br/>
+/// Money Rounding?<br/>
 class Dollar {
-  Dollar(int amount) {
-    _amount = amount;
-  }
+  Dollar(this.amount);
 
-  int _amount = 0;
+  int amount = 0;
 
-  int get amount => _amount;
-
-  void times(int multiplier) {
-    _amount *= multiplier;
+  Dollar times(int multiplier) {
+    return Dollar(amount * multiplier);
   }
 }
