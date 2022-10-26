@@ -5,8 +5,12 @@
 /// Money Rounding?<br/>
 /// ~equals()~<br/>
 /// hashCode<br/>
-/// Equal null
-/// Equal object
+/// Equal null<br/>
+/// Equal object<br/>
+/// ~5 CHF * 2 = 10 CHF~<br/>
+/// Dolllar/Franc duplication<br/>
+/// Common equals<br/>
+/// Common times<br/>
 class Dollar {
   Dollar([this._amount = 0]);
 
