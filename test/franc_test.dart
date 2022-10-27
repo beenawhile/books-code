@@ -10,4 +10,12 @@ void main() {
       expect(Franc(15).equals(franc.times(3)), true);
     },
   );
+
+  test(
+    "equals()",
+    () async {
+      expect(Franc(5).equals(Franc(5)), true);
+      expect(Franc(5).equals(Franc(6)), false);
+    },
+  );
 }
