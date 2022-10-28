@@ -10,4 +10,12 @@ void main() {
       expect(Money.dollar(5).equals(Money.franc(5)), true);
     },
   );
+
+  test(
+    "Subclasses of Money returns right currency",
+    () async {
+      expect("USD", Money.dollar(1).currency);
+      expect("CHF", Money.franc(1).currency);
+    },
+  );
 }

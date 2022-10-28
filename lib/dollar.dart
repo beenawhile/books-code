@@ -14,13 +14,13 @@ import 'money.dart';
 /// ~Common equals~<br/>
 /// Common times<br/>
 /// ~Compare Francs with Dollars~<br/>
-/// Currency?<br/>
+/// ~Currency?~<br/>
 /// Delete "Franc should calculate times()" in franc_test.dart</br>
 class Dollar extends Money {
-  Dollar(super.amount);
+  Dollar(super.amount, super.currency);
 
   @override
-  Dollar times(int multiplier) {
-    return Dollar(amount * multiplier);
+  Money times(int multiplier) {
+    return Money.dollar(amount * multiplier);
   }
 }
