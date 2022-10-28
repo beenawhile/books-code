@@ -1,17 +1,15 @@
-import 'package:tdd_by_example/dollar.dart';
-import 'package:tdd_by_example/franc.dart';
-
 class Money {
   final int amount;
   final String currency;
+
   Money(this.amount, this.currency);
 
   static Money dollar(int amount) {
-    return Dollar(amount, "USD");
+    return Money(amount, "USD");
   }
 
   static Money franc(int amount) {
-    return Franc(amount, "CHF");
+    return Money(amount, "CHF");
   }
 
   bool equals(Object other) {

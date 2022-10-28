@@ -20,7 +20,7 @@ Equal object
 
 ~~5 CHF * 2 = 10 CHF~~
 
-Dolllar/Franc duplication
+~~Dolllar/Franc duplication~~
 
 ~~Common equals~~
 
@@ -30,4 +30,4 @@ Dolllar/Franc duplication
 
 ~~Currency?~~
 
-Delete "Franc should calculate times()" in franc_test.dart</br>
+~~Delete "Franc should calculate times()" in franc_test.dart~~
