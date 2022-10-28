@@ -13,7 +13,8 @@ import 'money.dart';
 /// Dolllar/Franc duplication<br/>
 /// ~Common equals~<br/>
 /// Common times<br/>
-/// Compare Francs with Dollars<br/>
+/// ~Compare Francs with Dollars~<br/>
+/// Currency?<br/>
 class Dollar extends Money {
   Dollar(int amount) : super(amount: amount);
 
