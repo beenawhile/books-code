@@ -1,7 +1,7 @@
 import 'package:tdd_by_example/dollar.dart';
 import 'package:tdd_by_example/franc.dart';
 
-abstract class Money {
+class Money {
   final int amount;
   final String currency;
   Money(this.amount, this.currency);
@@ -15,8 +15,12 @@ abstract class Money {
   }
 
   bool equals(Object other) {
-    return (other is Money && other.amount == amount);
+    return (other is Money &&
+        other.amount == amount &&
+        other.currency == currency);
   }
 
-  Money times(int multiplier);
+  Money times(int multiplier) {
+    return Money(amount * multiplier, currency);
+  }
 }
