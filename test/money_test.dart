@@ -49,4 +49,34 @@ void main() {
       expect(Money.dollar(10).equals(reduced), true);
     },
   );
+
+  test(
+    "Money.plus() should return Sum",
+    () async {
+      Money five = Money.dollar(5);
+      Expression result = five.plus(five);
+      Sum sum = result as Sum;
+      expect(five.equals(sum.augend), true);
+      expect(five.equals(sum.addend), true);
+    },
+  );
+
+  test(
+    "Bank.reduce(Sum,~) should return a valid Money",
+    () async {
+      Expression sum = Sum(Money.dollar(3), Money.dollar(4));
+      Bank bank = Bank();
+      Money result = bank.reduce(sum, "USD");
+      expect(Money.dollar(7).equals(result), true);
+    },
+  );
+
+  test(
+    "Bank.reduce(Money,~) should return a valid Money",
+    () async {
+      Bank bank = Bank();
+      Money result = bank.reduce(Money.dollar(1), "USD");
+      expect(Money.dollar(1).equals(result), true);
+    },
+  );
 }
