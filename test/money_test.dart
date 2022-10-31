@@ -1,6 +1,5 @@
 import 'package:tdd_by_example/bank.dart';
 import 'package:tdd_by_example/expression.dart';
-import 'package:tdd_by_example/franc.dart';
 import 'package:tdd_by_example/money.dart';
 import 'package:test/test.dart';
 
@@ -34,7 +33,7 @@ void main() {
   test(
     "Different classes should be equal",
     () async {
-      expect(Money(10, "CHF").equals(Franc(10, "CHF")), true);
+      expect(Money(10, "CHF").equals(Money.franc(10)), true);
     },
   );
 
@@ -77,6 +76,23 @@ void main() {
       Bank bank = Bank();
       Money result = bank.reduce(Money.dollar(1), "USD");
       expect(Money.dollar(1).equals(result), true);
+    },
+  );
+
+  test(
+    "Bank should reduce money in different currency",
+    () async {
+      Bank bank = Bank();
+      bank.addRate("CHF", "USD", 2);
+      Money result = bank.reduce(Money.franc(2), "USD");
+      expect(result.equals(Money.dollar(1)), true);
+    },
+  );
+
+  test(
+    "Bank.rate should be identical if currencies are same",
+    () async {
+      expect(1, Bank().rate("USD", "USD"));
     },
   );
 }

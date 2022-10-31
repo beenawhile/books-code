@@ -8,9 +8,9 @@ Return Money from $5 + $5
 
 ~~Bank.reduce(Money)~~
 
-Reduce Money with conversion
+~~Reduce Money with conversion~~
 
-Reduce(Bank, String)
+~~Reduce(Bank, String)~~
 
 ~~$5 * 2 = $10~~
 
