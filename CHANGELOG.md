@@ -2,13 +2,15 @@
 
 $5 + 10 CHF = $10 if rate is 2:1
 
+$5 + $5 = $10
+
 ~~$5 * 2 = $10~~
 
 ~~Make "amount" private~~
 
 ~~Dollar side-effects?~~
 
-Money Rounding?<br/>
+Money Rounding?
 
 ~~equals()~~
 

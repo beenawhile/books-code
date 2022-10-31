@@ -1,3 +1,5 @@
+import 'package:tdd_by_example/bank.dart';
+import 'package:tdd_by_example/expression.dart';
 import 'package:tdd_by_example/franc.dart';
 import 'package:tdd_by_example/money.dart';
 import 'package:test/test.dart';
@@ -33,6 +35,18 @@ void main() {
     "Different classes should be equal",
     () async {
       expect(Money(10, "CHF").equals(Franc(10, "CHF")), true);
+    },
+  );
+
+  test(
+    "addition function should return right summed Money",
+    () async {
+      final five = Money.dollar(5);
+      Expression sum = five.plus(five);
+
+      final bank = Bank();
+      Money reduced = bank.reduce(sum, "USD");
+      expect(Money.dollar(10).equals(reduced), true);
     },
   );
 }
