@@ -22,6 +22,7 @@ class Money implements Expression {
         other.currency == currency);
   }
 
+  @override
   Expression times(int multiplier) {
     return Money(amount * multiplier, currency);
   }

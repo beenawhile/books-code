@@ -4,7 +4,7 @@
 
 ~~$5 + $5 = $10~~
 
-Return Money from $5 + $5
+~~Return Money from $5 + $5~~
 
 ~~Bank.reduce(Money)~~
 
@@ -12,9 +12,9 @@ Return Money from $5 + $5
 
 ~~Reduce(Bank, String)~~
 
-Sum.plus
+~~Sum.plus~~
 
-Expression.times
+~~Expression.times~~
 
 ~~$5 * 2 = $10~~
 

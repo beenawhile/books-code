@@ -107,4 +107,30 @@ void main() {
       expect(Money.dollar(10).equals(result), true);
     },
   );
+
+  test(
+    "Sum.plus should calculate money addition",
+    () async {
+      Expression fiveBucks = Money.dollar(5);
+      Expression tenFrancs = Money.franc(10);
+      Bank bank = Bank();
+      bank.addRate("CHF", "USD", 2);
+      Expression sum = Sum(fiveBucks, tenFrancs).plus(fiveBucks);
+      Money result = bank.reduce(sum, "USD");
+      expect(Money.dollar(15).equals(result), true);
+    },
+  );
+
+  test(
+    "Sum.times should calculate multiplication of expression",
+    () async {
+      Expression fiveBucks = Money.dollar(5);
+      Expression tenFrancs = Money.franc(10);
+      Bank bank = Bank();
+      bank.addRate("CHF", "USD", 2);
+      Expression sum = Sum(fiveBucks, tenFrancs).times(2);
+      Money result = sum.reduce(bank, "USD");
+      expect(Money.dollar(20).equals(result), true);
+    },
+  );
 }
