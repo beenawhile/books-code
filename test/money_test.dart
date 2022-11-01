@@ -95,4 +95,16 @@ void main() {
       expect(1, Bank().rate("USD", "USD"));
     },
   );
+
+  test(
+    "Expression should support mixed addition of currency",
+    () async {
+      Expression fiveBucks = Money.dollar(5);
+      Expression tenFrancs = Money.franc(10);
+      Bank bank = Bank();
+      bank.addRate("CHF", "USD", 2);
+      Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
+      expect(Money.dollar(10).equals(result), true);
+    },
+  );
 }
