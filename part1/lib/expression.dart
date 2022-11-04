@@ -1,6 +1,5 @@
-import 'package:tdd_by_example/money.dart';
-
-import 'bank.dart';
+import 'package:tdd_by_example_part_1/bank.dart';
+import 'package:tdd_by_example_part_1/money.dart';
 
 abstract class Expression {
   Money reduce(Bank bank, String to);

@@ -1,10 +1,10 @@
-## Check-List
+## CHECKLIST
 
-~~$5 + 10 CHF = $10 if rate is 2:1~~
+$5 + 10 CHF = $10 if rate is 2:1
 
 ~~$5 + $5 = $10~~
 
-~~Return Money from $5 + $5~~
+Return Money from $5 + $5
 
 ~~Bank.reduce(Money)~~
 
@@ -20,13 +20,13 @@
 
 ~~Make "amount" private~~
 
-~~Dollar side-effects?~~
+~~Dollar side-effects~~
 
-Money Rounding?
+Money rounding?
 
 ~~equals()~~
 
-hashCode
+~~hashCode()~~
 
 Equal null
 
@@ -34,7 +34,7 @@ Equal object
 
 ~~5 CHF * 2 = 10 CHF~~
 
-~~Dolllar/Franc duplication~~
+~~Dollar/Franc duplication~~
 
 ~~Common equals~~
 
@@ -44,4 +44,4 @@ Equal object
 
 ~~Currency?~~
 
-~~Delete "Franc should calculate times()" in franc_test.dart~~
+~~Delete testFrancMultiplcation~~

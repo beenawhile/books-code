@@ -1,26 +1,24 @@
-import 'package:tdd_by_example/expression.dart';
-
-import 'bank.dart';
+import 'package:tdd_by_example_part_1/bank.dart';
+import 'package:tdd_by_example_part_1/expression.dart';
 
 class Money implements Expression {
   final int amount;
   final String currency;
 
-  Money(this.amount, this.currency);
+  const Money(this.amount, this.currency);
 
-  static Money dollar(int amount) {
-    return Money(amount, "USD");
-  }
+  factory Money.dollar(int amount) => Money(amount, "USD");
+  factory Money.franc(int amount) => Money(amount, "CHF");
 
-  static Money franc(int amount) {
-    return Money(amount, "CHF");
-  }
-
-  bool equals(Object other) {
+  @override
+  bool operator ==(Object other) {
     return (other is Money &&
         other.amount == amount &&
         other.currency == currency);
   }
+
+  @override
+  int get hashCode => amount;
 
   @override
   Expression times(int multiplier) {
