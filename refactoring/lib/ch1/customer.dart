@@ -1,4 +1,3 @@
-import 'package:refactoring/ch1/movie.dart';
 import 'package:refactoring/ch1/rental.dart';
 
 class Customer {
@@ -13,50 +12,53 @@ class Customer {
     _rentals.add(arg);
   }
 
-  void clearRental() {
+  void clearRentals() {
     _rentals.clear();
   }
 
   String statement() {
-    double totalAmount = 0;
-    int frequentRenterPoints = 0;
     String result = "Rental record for $name\n";
     for (final each in _rentals) {
-      double thisAmount = 0;
-      //determine amounts for each line
-      switch (each.movie.priceCode) {
-        case Movie.regular:
-          thisAmount +=2;
-          if (each.daysRented >2) {
-            thisAmount+=(each.daysRented-2) * 1.5;
-          }
-          break;
-        case Movie.newRelease:
-          thisAmount+=each.daysRented *3;
-          break;
-        case Movie.childrens:
-          thisAmount += 1.5;
-          if (each.daysRented >3) {
-            thisAmount += (each.daysRented-3) * 1.5;
-          }
-          break;
-      }
-
-      // add frequent renter points
-      frequentRenterPoints+=1;
-      // add bonus for a two day new release rental
-      if (each.movie.priceCode == Movie.newRelease && each.daysRented > 1) {
-        frequentRenterPoints+=1;
-      }
-
       // show figures for this rental
-      result += "\t${each.movie.title}\t$thisAmount\n";
-      totalAmount += thisAmount;
+      result += "\t${each.movie.title}\t${each.getCharge()}\n";
     }
 
     // add footer lines
-    result += "Amount owed is $totalAmount\n";
-    result += "You earned $frequentRenterPoints frequent renter points";
+    result += "Amount owed is ${_getTotalCharge()}\n";
+    result += "You earned ${_getTotalFrenquentRenterPoints()} frequent renter points";
+    return result;
+  }
+
+  double _getTotalCharge() {
+    double result = 0;
+
+    for (final each in _rentals) {
+      result += each.getCharge();
+    }
+
+    return result;
+  }
+
+  int _getTotalFrenquentRenterPoints() {
+    int result = 0;
+
+    for (final each in _rentals) {
+      result += each.getFrequentRenterPoints();
+    }
+
+    return result;
+  }
+
+  String htmlStatement() {
+    String result = '<H1>Rentals for <EM>$name</EM></H1><P>\n';
+    for (var each in _rentals) {
+      // show figures for each rental
+      result += '${each.movie.title}: ${each.getCharge()}<BR>\n';
+    }
+    // add footer lines
+    result += '<P>You owe <EM> $_getTotalCharge()</EM><P>\n';
+    result += 'On this rental you earned <EM>$_getTotalFrenquentRenterPoints()</EM>frequent renter points<P>';
+
     return result;
   }
 }

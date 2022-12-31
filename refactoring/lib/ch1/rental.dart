@@ -11,4 +11,12 @@ class Rental {
 
   set movie(Movie arg) => _movie = arg;
   set daysRented(int arg) => _daysRented = daysRented;
+
+  double getCharge() {
+    return _movie.getCharge(daysRented);
+  }
+
+  int getFrequentRenterPoints() {
+    return _movie.getFrequentRentalPoints(daysRented);
+  }
 }

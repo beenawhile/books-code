@@ -18,7 +18,7 @@ void main() {
 
   tearDown(
     () {
-      customer.clearRental();
+      customer.clearRentals();
     },
   );
 
