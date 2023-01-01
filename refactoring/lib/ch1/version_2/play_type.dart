@@ -1,0 +1,4 @@
+enum PlayType {
+  tragedy,
+  comedy,
+}
