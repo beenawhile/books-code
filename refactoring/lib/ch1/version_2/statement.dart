@@ -4,7 +4,6 @@ import 'index.dart';
 class Statement {
   String statement(Invoice invoice, Plays plays) {
     double totalAmount = 0;
-    int volumeCredits = 0;
     String result = 'Statement for ${invoice.customer}\n';
 
     for (final performance in invoice.performances) {
@@ -14,12 +13,8 @@ class Statement {
       totalAmount += _amountFor(performance, plays);
     }
 
-    for (var performance in invoice.performances) {
-      volumeCredits += _volumeCreditFor(plays, performance);
-    }
-
     result +=
-        'Amount owed is \$${(totalAmount / 100).floor()}\nYou earned $volumeCredits credits';
+        'Amount owed is \$${(totalAmount / 100).floor()}\nYou earned ${_totalVolumeCredits(invoice, plays)} credits';
     return result;
   }
 
@@ -58,6 +53,15 @@ class Statement {
     // add extra credit for every ten comedy attendees
     if (_playFor(plays, performance)?.type == PlayType.comedy) {
       volumeCredits += (performance.audience / 5).floor();
+    }
+
+    return volumeCredits;
+  }
+
+  int _totalVolumeCredits(Invoice invoice, Plays plays) {
+    int volumeCredits = 0;
+    for (var performance in invoice.performances) {
+      volumeCredits += _volumeCreditFor(plays, performance);
     }
 
     return volumeCredits;
