@@ -12,9 +12,12 @@ class Statement {
       result +=
           '\t${_playFor(plays, performance)?.name}: \$${(_amountFor(performance, plays) / 100).floor()} (${performance.audience} seats)\n';
       totalAmount += _amountFor(performance, plays);
+    }
 
+    for (var performance in invoice.performances) {
       volumeCredits += _volumeCreditFor(plays, performance);
     }
+
     result +=
         'Amount owed is \$${(totalAmount / 100).floor()}\nYou earned $volumeCredits credits';
     return result;
