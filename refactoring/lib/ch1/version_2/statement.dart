@@ -9,24 +9,8 @@ class Statement {
 
     for (final perf in invoice.performances) {
       Play? play = plays.getPlay(perf);
-      double thisAmount = 0;
-      switch (play?.type) {
-        case PlayType.tragedy:
-          thisAmount = 40000;
-          if (perf.audience > 30) {
-            thisAmount += 1000 * (perf.audience - 30);
-          }
-          break;
-        case PlayType.comedy:
-          thisAmount = 30000;
-          if (perf.audience > 20) {
-            thisAmount += 10000 + 500 * (perf.audience - 20);
-          }
-          thisAmount += 300 * perf.audience;
-          break;
-        default:
-          throw ArgumentError('unknown type: ${play?.type}');
-      }
+
+      final thisAmount = _amountFor(perf, play);
       // add volume credits
       volumeCredits += math.max(perf.audience - 30, 0);
       // add extra credit for every ten comedy attendees
@@ -41,5 +25,28 @@ class Statement {
     result +=
         'Amount owed is \$${(totalAmount / 100).floor()}\nYou earned $volumeCredits credits';
     return result;
+  }
+
+  int _amountFor(Performance perf, Play? play) {
+    int thisAmount = 0;
+    switch (play?.type) {
+      case PlayType.tragedy:
+        thisAmount = 40000;
+        if (perf.audience > 30) {
+          thisAmount += 1000 * (perf.audience - 30);
+        }
+        break;
+      case PlayType.comedy:
+        thisAmount = 30000;
+        if (perf.audience > 20) {
+          thisAmount += 10000 + 500 * (perf.audience - 20);
+        }
+        thisAmount += 300 * perf.audience;
+        break;
+      default:
+        throw ArgumentError('unknown type: ${play?.type}');
+    }
+
+    return thisAmount;
   }
 }
