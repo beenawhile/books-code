@@ -8,17 +8,17 @@ class Statement {
     String result = 'Statement for ${invoice.customer}\n';
 
     for (final performance in invoice.performances) {
-      final thisAmount = _amountFor(performance, plays);
       // add volume credits
       volumeCredits += math.max(performance.audience - 30, 0);
+
       // add extra credit for every ten comedy attendees
       if (_playFor(plays, performance)?.type == PlayType.comedy) {
         volumeCredits += (performance.audience / 5).floor();
       }
       // print line for this order
       result +=
-          '\t${_playFor(plays, performance)?.name}: \$${(thisAmount / 100).floor()} (${performance.audience} seats)\n';
-      totalAmount += thisAmount;
+          '\t${_playFor(plays, performance)?.name}: \$${(_amountFor(performance, plays) / 100).floor()} (${performance.audience} seats)\n';
+      totalAmount += _amountFor(performance, plays);
     }
     result +=
         'Amount owed is \$${(totalAmount / 100).floor()}\nYou earned $volumeCredits credits';
