@@ -27,21 +27,21 @@ class Statement {
     return result;
   }
 
-  int _amountFor(Performance perf, Play? play) {
+  int _amountFor(Performance performance, Play? play) {
     int result = 0;
     switch (play?.type) {
       case PlayType.tragedy:
         result = 40000;
-        if (perf.audience > 30) {
-          result += 1000 * (perf.audience - 30);
+        if (performance.audience > 30) {
+          result += 1000 * (performance.audience - 30);
         }
         break;
       case PlayType.comedy:
         result = 30000;
-        if (perf.audience > 20) {
-          result += 10000 + 500 * (perf.audience - 20);
+        if (performance.audience > 20) {
+          result += 10000 + 500 * (performance.audience - 20);
         }
-        result += 300 * perf.audience;
+        result += 300 * performance.audience;
         break;
       default:
         throw ArgumentError('unknown type: ${play?.type}');
