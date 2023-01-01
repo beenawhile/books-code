@@ -7,19 +7,17 @@ class Statement {
     int volumeCredits = 0;
     String result = 'Statement for ${invoice.customer}\n';
 
-    for (final perf in invoice.performances) {
-      Play? play = plays.getPlay(perf);
-
-      final thisAmount = _amountFor(perf, play);
+    for (final performance in invoice.performances) {
+      final thisAmount = _amountFor(performance, plays);
       // add volume credits
-      volumeCredits += math.max(perf.audience - 30, 0);
+      volumeCredits += math.max(performance.audience - 30, 0);
       // add extra credit for every ten comedy attendees
-      if (play?.type == PlayType.comedy) {
-        volumeCredits += (perf.audience / 5).floor();
+      if (_playFor(plays, performance)?.type == PlayType.comedy) {
+        volumeCredits += (performance.audience / 5).floor();
       }
       // print line for this order
       result +=
-          '\t${play?.name}: \$${(thisAmount / 100).floor()} (${perf.audience} seats)\n';
+          '\t${_playFor(plays, performance)?.name}: \$${(thisAmount / 100).floor()} (${performance.audience} seats)\n';
       totalAmount += thisAmount;
     }
     result +=
@@ -27,7 +25,8 @@ class Statement {
     return result;
   }
 
-  int _amountFor(Performance performance, Play? play) {
+  int _amountFor(Performance performance, Plays plays) {
+    final play = _playFor(plays, performance);
     int result = 0;
     switch (play?.type) {
       case PlayType.tragedy:
@@ -48,5 +47,9 @@ class Statement {
     }
 
     return result;
+  }
+
+  Play? _playFor(Plays plays, Performance performance) {
+    return plays.getPlay(performance);
   }
 }
