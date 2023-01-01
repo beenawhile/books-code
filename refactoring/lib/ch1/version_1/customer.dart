@@ -1,4 +1,4 @@
-import 'package:refactoring/ch1/rental.dart';
+import 'index.dart';
 
 class Customer {
   Customer(this._name);
@@ -25,7 +25,8 @@ class Customer {
 
     // add footer lines
     result += "Amount owed is ${_getTotalCharge()}\n";
-    result += "You earned ${_getTotalFrenquentRenterPoints()} frequent renter points";
+    result +=
+        "You earned ${_getTotalFrenquentRenterPoints()} frequent renter points";
     return result;
   }
 
@@ -57,7 +58,8 @@ class Customer {
     }
     // add footer lines
     result += '<P>You owe <EM> $_getTotalCharge()</EM><P>\n';
-    result += 'On this rental you earned <EM>$_getTotalFrenquentRenterPoints()</EM>frequent renter points<P>';
+    result +=
+        'On this rental you earned <EM>$_getTotalFrenquentRenterPoints()</EM>frequent renter points<P>';
 
     return result;
   }

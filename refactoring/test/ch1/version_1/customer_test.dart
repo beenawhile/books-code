@@ -1,6 +1,4 @@
-import 'package:refactoring/ch1/customer.dart';
-import 'package:refactoring/ch1/movie.dart';
-import 'package:refactoring/ch1/rental.dart';
+import 'package:refactoring/ch1/version_1/index.dart';
 import 'package:test/test.dart';
 
 void main() {

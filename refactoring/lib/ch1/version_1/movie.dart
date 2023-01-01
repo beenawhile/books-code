@@ -1,4 +1,5 @@
-import 'price.dart';
+
+import 'index.dart';
 
 class Movie {
   Movie(this._title, int code) {
@@ -9,8 +10,8 @@ class Movie {
   static const int newRelease = 1;
   static const int childrens = 2;
 
-  String _title;
-  late Price _price;
+  final String _title;
+  late final Price _price;
 
   int get priceCode => _price.code;
   String get title => _title;
@@ -27,12 +28,8 @@ class Movie {
         _price = ChildrensPrice();
         break;
       default:
-          throw ArgumentError(this);
+        throw ArgumentError(this);
     }
-  }
-
-  set title(String arg) {
-    _title = title;
   }
 
   double getCharge(int daysRented) {

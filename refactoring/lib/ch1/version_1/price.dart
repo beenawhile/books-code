@@ -1,4 +1,4 @@
-import 'package:refactoring/ch1/movie.dart';
+import 'index.dart';
 
 abstract class Price {
   int get code;
