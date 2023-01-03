@@ -1,11 +1,15 @@
-import 'dart:math' as math;
+import 'package:refactoring/ch1/version_2/performance_calculator.dart';
+
 import 'index.dart';
 
 class StatementData {
-  const StatementData(this._invoice, this._plays);
+  StatementData(this._invoice, this._plays){
+    calculatorFactory = PerformanceCalculatorFactory();
+  }
 
   final Invoice _invoice;
   final Plays _plays;
+  late final PerformanceCalculatorFactory calculatorFactory;
 
   String get customer => _invoice.customer;
 
@@ -26,27 +30,7 @@ class StatementData {
   }
 
   int amountFor(Performance performance) {
-    final play = playFor(performance);
-    int result = 0;
-    switch (play?.type) {
-      case PlayType.tragedy:
-        result = 40000;
-        if (performance.audience > 30) {
-          result += 1000 * (performance.audience - 30);
-        }
-        break;
-      case PlayType.comedy:
-        result = 30000;
-        if (performance.audience > 20) {
-          result += 10000 + 500 * (performance.audience - 20);
-        }
-        result += 300 * performance.audience;
-        break;
-      default:
-        throw ArgumentError('unknown type: ${play?.type}');
-    }
-
-    return result;
+    return calculatorFactory.createPerformanceCalculator(performance, playFor(performance)).amountFor();
   }
 
   int totalVolumeCredits() {
@@ -58,10 +42,6 @@ class StatementData {
   }
 
   int volumeCreditFor(Performance performance) {
-    int volumeCredits = math.max(performance.audience - 30, 0);
-    if (playFor(performance)?.type == PlayType.comedy) {
-      volumeCredits += (performance.audience / 5).floor();
-    }
-    return volumeCredits;
+    return calculatorFactory.createPerformanceCalculator(performance, playFor(performance)).volumeCreditFor();
   }
 }
