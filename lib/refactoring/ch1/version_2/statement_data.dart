@@ -1,5 +1,3 @@
-import 'performance_calculator.dart';
-
 import 'index.dart';
 
 class StatementData {
