@@ -1,8 +1,7 @@
 import 'index.dart';
 
 class Producer {
-
-  Producer(this.name,this.cost,this._production, [this.province]);
+  Producer(this.name, this.cost, this._production, [this.province]);
 
   final String name;
   final int cost;
